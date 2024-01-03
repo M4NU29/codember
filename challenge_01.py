@@ -20,9 +20,11 @@ for word in words:
     if word not in ordered_words:
       ordered_words.append(word)
 
+# Count the occurrences of each unique word in the original message
 total_words = [str(message.count(word)) for word in ordered_words]
 result = ""
 
+# Iterate through the unique words and their corresponding counts
 for i in range(len(ordered_words)):
     result = result + ordered_words[i] + total_words[i]
 

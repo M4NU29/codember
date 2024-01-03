@@ -17,13 +17,17 @@
 
 # La segunda clave, zzzsg, no lo es; contiene 3 veces la letra z, pero necesita al menos 4. Las primeras y terceras claves son válidas: contienen la cantidad adecuada de f y h, respectivamente, según sus políticas.
 
+# Función para evaluar contraseñas basado en los parámetros establecidos
 def evaluate_password(password):
     array_password = password.split(":")
     parameters = array_password[0]
-    minimum = int(parameters[:parameters.index("-")])
-    maximum = int(parameters[(parameters.index("-")+1):parameters.index(" ")])
     key = array_password[1]
 
+    # Obtener los valores mínimo y máximo de la política de la contraseña
+    minimum = int(parameters[:parameters.index("-")])
+    maximum = int(parameters[(parameters.index("-")+1):parameters.index(" ")])
+
+    # Verificar si el número de ocurrencias de la letra clave está dentro del rango especificado
     if key.count(parameters[-1]) >= minimum and key.count(parameters[-1]) <= maximum:
         return True
     else:

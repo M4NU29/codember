@@ -8,9 +8,9 @@
 # "@" Decrementa el valor numérico en 1.
 # "*" Multiplica el valor numérico por sí mismo.
 # "&" Imprime el valor numérico actual.
-# El valor numérico inicial es 0 y las operaciones deben aplicarse en elorden en que aparecen en la cadena de símbolos.
+# El valor numérico inicial es 0 y las operaciones deben aplicarse en el orden en que aparecen en la cadena de símbolos.
 
-symbols = input("Digite los simbolos: ")
+symbols = input("Digite los símbolos: ")
 total = 0
 
 for symbol in symbols:
