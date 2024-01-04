@@ -19,14 +19,14 @@ def validate_user(id, username, email, age=0, location=""):
 
   if id.isalnum() and (username.isalnum() or username.isalpha()) and re.fullmatch(regex, email) and age.isnumeric():
     return True
-  else:
-    return False
+  
+  return False
   
 invalid_users = []
 
 with open("CHALLENGE_05/data.csv", "r") as data:
   for user in data:
-     # Split the user information into fields using comma as a delimiter
+    # Split the user information into fields using comma as a delimiter
     fields = user.strip().split(",")
 
     if validate_user(*fields) is False:

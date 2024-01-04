@@ -35,14 +35,14 @@ fake_files = []
 with open("CHALLENGE_04/files.txt", "r") as files:
   for file in files:
     if check_file(file.strip()):
-        real_files.append(file.strip())
+      real_files.append(file.strip())
     else:
-        fake_files.append(file.strip())
+      fake_files.append(file.strip())
 
 print("Real Files:")
 for i, file in enumerate(real_files, 1):
-    print(f"{i}. {file}")
+  print(f"{i}. {file}")
 
 print("\nFake Files:")
 for i, file in enumerate(fake_files, 1):
-    print(f"{i}. {file}")
+  print(f"{i}. {file}")

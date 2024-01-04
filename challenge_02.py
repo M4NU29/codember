@@ -14,11 +14,12 @@ symbols = input("Digite los símbolos: ")
 total = 0
 
 for symbol in symbols:
-    if symbol is "#":
-        total += 1
-    elif symbol is "@":
-        total -= 1
-    elif symbol is "*":
-        total *= total
-    elif symbol is "&":
-        print(total, end="")
+  match symbol:
+    case "#":
+      total += 1
+    case "@":
+      total -= 1
+    case "*":
+      total *= total
+    case "&":
+      print(total, end="")

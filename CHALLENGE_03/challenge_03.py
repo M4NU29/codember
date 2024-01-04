@@ -19,34 +19,34 @@
 
 # Función para evaluar contraseñas basado en los parámetros establecidos
 def evaluate_password(password):
-    array_password = password.split(":")
-    parameters = array_password[0]
-    key = array_password[1]
+  array_password = password.split(":")
+  parameters = array_password[0]
+  key = array_password[1]
 
-    # Obtener los valores mínimo y máximo de la política de la contraseña
-    minimum = int(parameters[:parameters.index("-")])
-    maximum = int(parameters[(parameters.index("-")+1):parameters.index(" ")])
+  # Obtener los valores mínimo y máximo de la política de la contraseña
+  minimum = int(parameters[:parameters.index("-")])
+  maximum = int(parameters[(parameters.index("-")+1):parameters.index(" ")])
 
-    # Verificar si el número de ocurrencias de la letra clave está dentro del rango especificado
-    if key.count(parameters[-1]) >= minimum and key.count(parameters[-1]) <= maximum:
-        return True
-    else:
-        return False
+  # Verificar si el número de ocurrencias de la letra clave está dentro del rango especificado
+  if key.count(parameters[-1]) <= minimum and key.count(parameters[-1]) >= maximum:
+    return False
+    
+  return False
 
 valid_keys = []
 invalid_keys = []
 
 with open("CHALLENGE_03/keys.txt", "r") as keys:
-    for key in keys:
-      if evaluate_password(key):
-         valid_keys.append(key.strip())
-      else:
-         invalid_keys.append(key.strip())
+  for key in keys:
+    if evaluate_password(key):
+      valid_keys.append(key.strip())
+    else:
+      invalid_keys.append(key.strip())
 
 print("Claves válidas:")
 for i, key in enumerate(valid_keys, 1):
-    print(f"{i}. {key}")
+  print(f"{i}. {key}")
 
 print("\nClaves inválidas:")
 for i, key in enumerate(invalid_keys, 1):
-    print(f"{i}. {key}")
+  print(f"{i}. {key}")
