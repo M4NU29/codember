@@ -7,12 +7,13 @@
 # Write a program that determines whether a file is real or fake based on these rules.
 
 # Function to check the validity of a file based on its filename
-def check_file(filename):
+def check_file(filename: str) -> bool:
   # Split the filename into name and checksum parts
-  filename = filename.split("-")
-  name = filename[0]
-  checksum = filename[1]
-  appeared_once = []
+  keys: list[str] = filename.split('-')
+  name: str
+  checksum: str
+  name, checksum = keys
+  appeared_once: list[str] = []
 
   for letter in checksum:
     if name.count(letter) == 1:
@@ -21,7 +22,7 @@ def check_file(filename):
       return False
 
   # Get the index of the letters that appeared only once in the name
-  letters_index = [name.index(letter) for letter in appeared_once]
+  letters_index: list[int] = [name.index(letter) for letter in appeared_once]
 
   # Check if there is at least one letter that appeared only once, and if the indexes are in sequential order
   if len(appeared_once) >= 1 and sorted(letters_index) == letters_index:
@@ -29,20 +30,14 @@ def check_file(filename):
   else:
     return False
   
-real_files = []
-fake_files = []
+with open('CHALLENGE_04/files.txt', 'r') as files:
+  real_files: list[str] = [file.strip() for file in files if check_file(file.strip())]
+  fake_files: list[str] = [file.strip() for file in files if not check_file(file.strip())]
 
-with open("CHALLENGE_04/files.txt", "r") as files:
-  for file in files:
-    if check_file(file.strip()):
-      real_files.append(file.strip())
-    else:
-      fake_files.append(file.strip())
-
-print("Real Files:")
+print('Real Files:')
 for i, file in enumerate(real_files, 1):
-  print(f"{i}. {file}")
+  print(f'{i}. {file}')
 
-print("\nFake Files:")
+print('\nFake Files:')
 for i, file in enumerate(fake_files, 1):
-  print(f"{i}. {file}")
+  print(f'{i}. {file}')

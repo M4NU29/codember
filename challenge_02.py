@@ -4,22 +4,22 @@
 
 # Las operaciones del lenguaje son las siguientes:
 
-# "#" Incrementa el valor numérico en 1.
-# "@" Decrementa el valor numérico en 1.
-# "*" Multiplica el valor numérico por sí mismo.
-# "&" Imprime el valor numérico actual.
+# '#' Incrementa el valor numérico en 1.
+# '@' Decrementa el valor numérico en 1.
+# '*' Multiplica el valor numérico por sí mismo.
+# '&' Imprime el valor numérico actual.
 # El valor numérico inicial es 0 y las operaciones deben aplicarse en el orden en que aparecen en la cadena de símbolos.
 
-symbols = input("Digite los símbolos: ")
-total = 0
+symbols: str = input('Digite los símbolos: ')
+total: int = 0
 
 for symbol in symbols:
   match symbol:
-    case "#":
+    case '#':
       total += 1
-    case "@":
+    case '@':
       total -= 1
-    case "*":
+    case '*':
       total *= total
-    case "&":
-      print(total, end="")
+    case '&':
+      print(total, end='')

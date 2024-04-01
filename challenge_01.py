@@ -12,22 +12,18 @@
 
 # The words are sorted by their first appearance in the message!
 
-message = input("Write the message: ").lower()
-words = message.split()
-ordered_words = []
+message: str = input('Write the message: ').lower()
+words: list[str] = message.split()
+ordered_words: list[str] = []
 
 for word in words:
   if word not in ordered_words:
     ordered_words.append(word)
 
 # Count the occurrences of each unique word in the original message
-total_words = [str(message.count(word)) for word in ordered_words]
-result = ""
+total_words: list[str] = [str(message.count(word)) for word in ordered_words]
 
 # Iterate through the unique words and their corresponding counts
-for i in range(len(ordered_words)):
-  result = result + ordered_words[i] + total_words[i]
+result: str = ''.join([word + i for word, i in zip(ordered_words, total_words)])
 
-print(f"\n{result}")
-
-# Maybe should improve the code later
+print(f'\n{result}')
